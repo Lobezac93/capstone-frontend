@@ -1,59 +1,66 @@
-import React from 'react';
-import axios from 'axios'
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import { useUser } from '@clerk/clerk-react';
-import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import ProfessorDetail from './ProfessorDetails';
 
 function HomePage() {
   const { user } = useUser();
-  const [prof, setProf] = useState([])
-  const[error, setError] = useState(null)
-  const[loading, setLoading] = useState(true)
-
+  const [prof, setProf] = useState([]);
+  const [selectedProf, setSelectedProf] = useState(null); // Store selected professor details
+  const [error, setError] = useState(null);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const fetchProfessors = async ()=> {
+    const fetchProfessors = async () => {
       try {
-        const res = await axios.get('http://localhost:5000/api/professors')
-        console.log(res.data)
-        setProf(res.data)
+        const res = await axios.get('http://localhost:5000/api/professors');
+        setProf(res.data);
       } catch (error) {
-        setError('Error fetching professors')
-        console.error(error)
+        setError('Error fetching professors');
+        console.error(error);
       } finally {
-        setLoading(false)
+        setLoading(false);
       }
-    } 
-    
-    fetchProfessors()
-  },[])
+    };
+    fetchProfessors();
+  }, []);
 
-
-  if (!user) {
-    return <div>Loading...</div>; 
-  }
-
-  if (loading){
-    return <p>Loading professors....</p>
-  }
-
-  if(error) {
-    return<p>{error}</p>
-  }
+  const handleSelectProfessor = async (id) => {
+    try {
+      setLoading(true);
+      const res = await axios.get(`http://localhost:5000/api/professors/${id}`);
+      setSelectedProf(res.data);
+      setError(null);
+    } catch (error) {
+      setError('Error fetching professor details');
+      console.error(error);
+    } finally {
+      setLoading(false);
+    }
+  };
 
   return (
     <div className='home-page-container'>
-      <h1>Welcome {user.firstName}! to the Rate Your Professor app</h1>
-      <select>
+      <h1>Welcome {user?.firstName}! to the Rate Your Professor app</h1>
+
+      {loading && <p>Loading...</p>}
+      {error && <p>{error}</p>}
+
+      <select onChange={(e) => handleSelectProfessor(e.target.value)}>
         <option>Select a professor</option>
         {prof.map((prof) => (
-          <option key={prof._id}>{prof.name} -{prof.department}</option>
+          <option key={prof._id} value={prof._id}>
+            {prof.name} - {prof.department}
+          </option>
         ))}
       </select>
-      <button>search</button>
+
+      {selectedProf && (
+        <ProfessorDetail professor={selectedProf} onRatingAdded={handleSelectProfessor} />
+      )}
     </div>
   );
 }
 
 export default HomePage;
-
-

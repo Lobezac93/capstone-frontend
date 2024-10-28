@@ -1,0 +1,56 @@
+.auth-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 20px; /* Padding for navbar spacing */
+  background-color: #333; /* Dark background for navbar */
+  color: #fff; /* White text color */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Slight shadow for depth */
+}
+
+.auth-container .button-container {
+  display: flex;
+  gap: 15px; /* Space between buttons */
+}
+
+.auth-container .auth-button {
+  background-color: #4CAF50; /* Custom button color */
+  color: #fff;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.auth-container .auth-button:hover {
+  background-color: #45a049; /* Darken on hover */
+}
+
+.auth-container .icon {
+  font-size: 24px;
+  cursor: pointer;
+  margin-right: 10px; /* Space between icons */
+  transition: color 0.3s ease;
+}
+
+.auth-container .icon:hover {
+  color: #4CAF50; /* Color change on hover */
+}
+
+h1 {
+  font-size: 2em;
+  margin-top: 20px;
+  color: #333;
+}
+
+p {
+  font-size: 1.2em;
+  color: #666;
+}
+
+
+auth-introduction{
+  text-align: center;
+  margin-top: 80px;
+}
