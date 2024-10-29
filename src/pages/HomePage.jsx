@@ -3,6 +3,7 @@ import axios from 'axios';
 import { useUser } from '@clerk/clerk-react';
 import { useNavigate } from 'react-router-dom';
 import ProfessorDetail from './ProfessorDetails';
+import NavBar from '../components/NavBar';
 
 function HomePage() {
   const { user } = useUser();
@@ -41,6 +42,8 @@ function HomePage() {
   };
 
   return (
+    <>
+    <NavBar />
     <div className='home-page-container'>
       <h1>Welcome {user?.firstName}! to the Rate Your Professor app</h1>
 
@@ -60,6 +63,7 @@ function HomePage() {
         <ProfessorDetail professor={selectedProf} onRatingAdded={handleSelectProfessor} />
       )}
     </div>
+    </>
   );
 }
 

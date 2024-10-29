@@ -1,0 +1,17 @@
+.navbar {
+    margin-bottom: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border: 2px  black;
+    padding: 10px;
+    background-color: burlywood;
+
+   
+}
+
+.auth-section{
+   display: flex;
+   justify-content: space-around;
+   align-items: center;
+}

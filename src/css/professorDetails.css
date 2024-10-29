@@ -1,0 +1,98 @@
+/* ProfessorDetail.css */
+
+.professor-details {
+    width: 90%;
+    max-width: 700px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #f7f9fc;
+    border-radius: 8px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .professor-details h2 {
+    color: #333;
+    font-size: 1.8em;
+    margin-bottom: 5px;
+  }
+  
+  .rating-summary {
+    background-color: #e6f3ff;
+    padding: 15px;
+    border-radius: 6px;
+    margin-bottom: 20px;
+  }
+  
+  .rating-summary p {
+    font-weight: bold;
+    color: #444;
+  }
+  
+  .rating-list h3 {
+    color: #555;
+    font-size: 1.4em;
+    margin-bottom: 10px;
+  }
+  
+  .rating-list ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .rating-list li {
+    padding: 10px;
+    margin-bottom: 10px;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  .rating-list li p {
+    margin: 5px 0;
+  }
+  
+  .error-message {
+    color: red;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  .add-rating {
+    background-color: #f2f2f2;
+    padding: 15px;
+    border-radius: 6px;
+  }
+  
+  .add-rating input[type="number"],
+  .add-rating textarea {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 1em;
+    margin-bottom: 10px;
+  }
+  
+  .add-rating .radio-group {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+  }
+  
+  .add-rating textarea {
+    resize: none;
+  }
+  
+  .add-rating button {
+    padding: 10px 15px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 1em;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .add-rating button:hover {
+    background-color: #0056b3;
+  }
+  
