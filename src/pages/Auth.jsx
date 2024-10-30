@@ -7,7 +7,7 @@ import {
   UserButton,
 } from "@clerk/clerk-react";
 import axios from "axios";
-import "../css/Auth.css";
+
 import { RiInstagramLine } from "react-icons/ri";
 import { FaFacebook } from "react-icons/fa";
 import NavBar from "../components/NavBar";
@@ -25,11 +25,12 @@ function Auth() {
             Authorization: `Client-ID ${import.meta.env.VITE_API_KEY}`,
           },
           params: {
-            query: "campus", // Specify your search keyword here
+            query: "campus", 
             orientation: "landscape",
           },
         });
-        setBackgroundImage(res.data.urls.full); // Set the full image URL as background
+        console.log(res.data)
+        setBackgroundImage(res.data.urls.full); 
       } catch (error) {
         console.error("Error fetching background image:", error);
       }
@@ -48,10 +49,10 @@ function Auth() {
         <img
           src={backgroundImage}
           alt=""
-          style={{ height: 700, width: 1500 }}
+          style={{ height: 700, width: 1700, padding:"25px 45px"}}
         />
-        <h1>Welcome to Our Platform</h1>
-        <p>
+        <h1 style={{textAlign:"center" , fontSize:"50px"}}>Welcome to Our Platform</h1>
+        <p style={{textAlign:"center", fontSize:"25px"}}>
           Join us by signing in or create an account for the first to rate our
           amazing professors!
         </p>

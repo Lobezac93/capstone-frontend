@@ -18,7 +18,7 @@ function ProfessorDetail({ professor, onRatingAdded }) {
 
   const handleAddRating = async () => {
     try {
-      await axios.post(`http://localhost:5000/api/ratings`, {
+      await axios.post(`${import.meta.env.VITE_API_BASE_URL}/api/ratings`, {
         ...newRating,
         professor: professor._id,
       });

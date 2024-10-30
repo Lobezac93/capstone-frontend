@@ -1,25 +1,46 @@
-import { useState } from 'react';
-import './App.css';
-import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
-import HomePage from './pages/HomePage';
-import Auth from './pages/Auth';
-import ProfessorDetail from './pages/ProfessorDetails';
+import { useState, useEffect } from "react";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Navigate,
+} from "react-router-dom";
+import HomePage from "./pages/HomePage";
+import Auth from "./pages/Auth";
+import ProfessorDetail from "./pages/ProfessorDetails";
+import { useAuth } from "@clerk/clerk-react";
+import { useNavigate } from 'react-router-dom'
+
 
 function App() {
-  // const [isAuthenticated, setIsAuthenticated] = useState(false); // State to manage authentication status
+  const [isAuthenticated, setIs] = useState(false)
+  const {userId, isLoaded} =useAuth()
+  const navigate = useNavigate()
+  console.log('userID',userId)
 
+  useEffect(() => {
+    if (isLoaded && !userId) {
+      navigate('/auth')
+    }
+  }, [isLoaded])
   return (
-    <Router>
+    
       <Routes>
-        {/* Redirect to HomePage if authenticated, otherwise go to Auth page */}
-        {/* <Route path="/" element={isAuthenticated ? <Navigate to="/home" /> : <Auth setIsAuthenticated={setIsAuthenticated} />} /> */}
-        <Route path='/auth' element={<Auth />}/>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/professors/:id" element={<ProfessorDetail />} />
+        <Route
+          path="/"
+          element={<HomePage />}
+        />
+
+        <Route path="/auth" element={<Auth />} />
+       
+
+        <Route
+          path="/professors/:id"
+          element={<ProfessorDetail/>}/>
+        
       </Routes>
-    </Router>
+    
   );
 }
 
 export default App;
-
